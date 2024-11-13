@@ -1,0 +1,2 @@
+# 35-COLLABORATION-SERVER-CGV
+35기 AND SOPT 합동세미나 APP2조 서버 레포지토리
