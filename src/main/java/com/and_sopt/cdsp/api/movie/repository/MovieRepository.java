@@ -5,5 +5,6 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface MovieRepository extends JpaRepository<Movie, Long> {
+    List<Movie> findMoviesByTheaterId(Long theaterId);
     List<Movie> findByTheaterIdAndAuditoriumAndAuditoriumType(Long theaterId, String auditorium, String auditoriumType);
 }
