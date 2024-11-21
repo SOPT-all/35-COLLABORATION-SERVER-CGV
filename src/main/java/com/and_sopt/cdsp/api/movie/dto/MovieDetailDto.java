@@ -7,7 +7,5 @@ public record MovieDetailDto( Long movieId, String movieName,String auditoriumTy
                               String startTime,
                               String endTime,
                               String releaseDate,
-                              Boolean isMorning, String seatImage
-                            ) {
-
-}
+                              Boolean isMorning, String seatiOS, String seatAnd
+                            ) { }

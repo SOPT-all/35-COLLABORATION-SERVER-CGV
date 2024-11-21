@@ -1,39 +1,22 @@
 package com.and_sopt.cdsp.api.theater.domain;
 
-import com.and_sopt.cdsp.api.movie.domain.Movie;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 
-import java.util.List;
 
 @Entity
+@Table(name="theater")
 public class Theater {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToMany
-    private List<Movie> movieList;
-
     private String theaterName;
 
-    private String auditorium;
-
-    private String auditoriumType;
-
+    public Long getId() {
+        return id;
+    }
 
     public String getTheaterName() {
         return theaterName;
-    }
-
-    public String getAuditorium() {
-        return auditorium;
-    }
-
-    public String getAuditoriumType() {
-        return auditoriumType;
     }
 }

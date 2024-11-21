@@ -1,13 +1,13 @@
 package com.and_sopt.cdsp.api.movie.domain;
 
 import com.and_sopt.cdsp.api.theater.domain.Theater;
-import com.and_sopt.cdsp.global.common.BaseTimeEntity;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 
 @Entity
-public class Movie extends BaseTimeEntity {
+@Table(name="movie")
+public class Movie {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -20,11 +20,19 @@ public class Movie extends BaseTimeEntity {
 
     private LocalDateTime endTime;
 
-    private String imageUrl;
+    @Column(name="seat_iOS")
+    private String seatiOS;
+
+    @Column(name="seat_And")
+    private String seatAnd;
 
     private boolean isMorning;
 
     private String movieName;
+
+    private String auditorium;
+
+    private String auditoriumType;
 
     public Long getId() {
         return id;
@@ -42,8 +50,12 @@ public class Movie extends BaseTimeEntity {
         return endTime;
     }
 
-    public String getImageUrl() {
-        return imageUrl;
+    public String getSeatiOS() {
+        return seatiOS;
+    }
+
+    public String getSeatAnd() {
+        return seatAnd;
     }
 
     public boolean isMorning() {
@@ -52,5 +64,13 @@ public class Movie extends BaseTimeEntity {
 
     public String getMovieName() {
         return movieName;
+    }
+
+    public String getAuditorium() {
+        return auditorium;
+    }
+
+    public String getAuditoriumType() {
+        return auditoriumType;
     }
 }

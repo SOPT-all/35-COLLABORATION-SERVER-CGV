@@ -6,6 +6,8 @@ import com.and_sopt.cdsp.global.response.ApiResponseDto;
 import com.and_sopt.cdsp.global.response.enums.SuccessCode;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/movie")
 public class MovieController {
@@ -17,7 +19,7 @@ public class MovieController {
     }
 
     @GetMapping("/{movieId}")
-    public ApiResponseDto<MovieDetailDto> getMovieDetail( @PathVariable final long movieId){
+    public ApiResponseDto<List<MovieDetailDto>> getMovieDetail(@PathVariable final Long movieId){
         return ApiResponseDto.success(SuccessCode.MOVIE_DETAIL_GET_SUCCESS,movieService.getMovieDetail(movieId));
     }
 }
