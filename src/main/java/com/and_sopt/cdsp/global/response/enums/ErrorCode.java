@@ -14,6 +14,7 @@ public enum ErrorCode {
     MISSING_REQUIRED_PARAMETER(40002, HttpStatus.BAD_REQUEST, "필수 파라미터가 누락되었습니다."),
     //404 Not Found
     NOT_FOUND(40400, HttpStatus.NOT_FOUND, "존재하지 않는 API입니다."),
+    THEATER_NOT_FOUND(40402, HttpStatus.NOT_FOUND, "존재하지 않는 영화관입니다."),
     NOT_FOUND_MOVIE(40401, HttpStatus.NOT_FOUND, "존재하지 않는 영화 ID 입니다."),
     //405 Method Not Allowed
     METHOD_NOT_ALLOWED(40500, HttpStatus.METHOD_NOT_ALLOWED, "지원하지 않는 메소드입니다."),
