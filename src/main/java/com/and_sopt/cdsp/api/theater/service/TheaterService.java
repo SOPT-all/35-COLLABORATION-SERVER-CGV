@@ -10,6 +10,8 @@ import com.and_sopt.cdsp.global.response.enums.ErrorCode;
 import java.util.List;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class TheaterService {
 
@@ -19,7 +21,6 @@ public class TheaterService {
     public TheaterService(TheaterRepository theaterRepository, MovieRepository movieRepository) {
         this.theaterRepository = theaterRepository;
         this.movieRepository = movieRepository;
-    }
 
     public MovieTimelineGetResponse getMovieTimeline(Long theaterId, String auditorium, String auditoriumType) {
         Theater theater = theaterRepository.findById(theaterId)
@@ -29,5 +30,8 @@ public class TheaterService {
         return MovieTimelineGetResponse.builder()
                 .movieList(movieList)
                 .build();
+
+    public List<Theater> getAllTheaters() {
+        return theaterRepository.findAll();
     }
 }
