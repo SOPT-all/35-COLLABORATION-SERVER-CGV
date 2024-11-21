@@ -22,7 +22,6 @@ public class TheaterController {
 
     @GetMapping
     public ApiResponseDto<List<Theater>> getTheaters() {
-        List<Theater> theaters = theaterService.getAllTheaters();
-        return ApiResponseDto.success(SuccessCode.MOVIE_THEATER_GET_SUCCESS, theaters);
+        return ApiResponseDto.success(SuccessCode.MOVIE_THEATER_GET_SUCCESS, theaterService.getAllTheaters());
     }
 }
