@@ -1,10 +1,8 @@
 package com.and_sopt.cdsp.api.movie.domain;
 
 import com.and_sopt.cdsp.api.theater.domain.Theater;
-import com.and_sopt.cdsp.global.common.BaseTimeEntity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;

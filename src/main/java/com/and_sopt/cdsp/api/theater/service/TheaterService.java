@@ -2,7 +2,6 @@ package com.and_sopt.cdsp.api.theater.service;
 
 import com.and_sopt.cdsp.api.movie.domain.Movie;
 import com.and_sopt.cdsp.api.movie.repository.MovieRepository;
-import com.and_sopt.cdsp.api.movie.service.MovieService;
 import com.and_sopt.cdsp.api.theater.dto.response.MovieTimelineGetResponse;
 import com.and_sopt.cdsp.api.theater.domain.Theater;
 import com.and_sopt.cdsp.api.theater.repository.TheaterRepository;
