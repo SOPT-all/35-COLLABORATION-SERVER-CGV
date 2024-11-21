@@ -18,7 +18,6 @@ public class MovieController {
 
     @GetMapping("/{movieId}")
     public ApiResponseDto<MovieDetailDto> getMovieDetail( @PathVariable final long movieId){
-        MovieDetailDto movieDetailDto = movieService.getMovieDetail(movieId);
-        return ApiResponseDto.success(SuccessCode.MOVIE_DETAIL_GET_SUCCESS,movieDetailDto);
+        return ApiResponseDto.success(SuccessCode.MOVIE_DETAIL_GET_SUCCESS,movieService.getMovieDetail(movieId));
     }
 }

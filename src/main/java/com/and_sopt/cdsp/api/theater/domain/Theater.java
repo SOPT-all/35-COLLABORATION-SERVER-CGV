@@ -6,11 +6,9 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
-import lombok.Getter;
 
 import java.util.List;
 
-@Getter
 @Entity
 public class Theater {
     @Id
@@ -26,4 +24,16 @@ public class Theater {
 
     private String auditoriumType;
 
+
+    public String getTheaterName() {
+        return theaterName;
+    }
+
+    public String getAuditorium() {
+        return auditorium;
+    }
+
+    public String getAuditoriumType() {
+        return auditoriumType;
+    }
 }
