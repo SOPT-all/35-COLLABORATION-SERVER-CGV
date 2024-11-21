@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.format.DateTimeFormatter;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Locale;
 import java.util.stream.Collectors;
@@ -34,6 +35,7 @@ public class MovieService {
         List<Movie> movieList = movieRepository.findMoviesByTheaterId(selectedMovie.getTheater().getId());
 
         return movieList.stream()
+                .sorted(Comparator.comparing(Movie::getStartTime)) //startTime 기준으로 오름차순으로 반환
                 .map(movie -> {
                     String releaseDate = movie.getStartTime().toLocalDate().format(DATE_FORMATTER);
 
