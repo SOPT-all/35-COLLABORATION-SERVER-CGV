@@ -1,6 +1,7 @@
 package com.and_sopt.cdsp.api.movie.domain;
 
 import com.and_sopt.cdsp.api.theater.domain.Theater;
+import com.and_sopt.cdsp.api.ticket.domain.Ticket;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
@@ -15,6 +16,10 @@ public class Movie {
     @ManyToOne
     @JoinColumn(name = "theater_id", nullable = false)
     private Theater theater;
+
+    @ManyToOne
+    @JoinColumn(name = "ticket_id",nullable = false)
+    private Ticket ticket;
 
     private LocalDateTime startTime;
 
@@ -41,6 +46,8 @@ public class Movie {
     public Theater getTheater() {
         return theater;
     }
+
+    public Ticket getTicket() { return ticket; }
 
     public LocalDateTime getStartTime() {
         return startTime;

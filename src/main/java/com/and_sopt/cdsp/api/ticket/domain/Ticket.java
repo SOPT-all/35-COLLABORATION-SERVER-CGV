@@ -10,4 +10,13 @@ public class Ticket {
     private Long id;
     @Column(name="ticket_count")
     private int ticketCount;
+
+
+    public Long getId() {
+        return id;
+    }
+
+    public int getTicketCount() {
+        return ticketCount;
+    }
 }
