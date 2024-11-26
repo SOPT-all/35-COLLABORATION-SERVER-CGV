@@ -1,10 +1,13 @@
 package com.and_sopt.cdsp.api.movie.service;
 
 import com.and_sopt.cdsp.api.movie.domain.Movie;
+import com.and_sopt.cdsp.api.movie.dto.MovieBookingDto;
 import com.and_sopt.cdsp.api.movie.dto.MovieDetailDto;
 import com.and_sopt.cdsp.api.movie.repository.MovieRepository;
 import com.and_sopt.cdsp.global.exception.CustomException;
+import com.and_sopt.cdsp.global.response.ApiResponseDto;
 import com.and_sopt.cdsp.global.response.enums.ErrorCode;
+import com.and_sopt.cdsp.global.response.enums.SuccessCode;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -12,6 +15,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Locale;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -53,5 +57,17 @@ public class MovieService {
                             .build();
                 })
                 .collect(Collectors.toList());
+    }
+
+    @Transactional
+    public ApiResponseDto<Movie> bookMovie(Long userId, MovieBookingDto movieBookingDto) {
+        Optional<Movie> movieOptional = movieRepository.findMovieByMovieNameAndTheater_TheaterName(
+                movieBookingDto.getMovieName(),
+                movieBookingDto.getTheaterName()
+        );
+        if (movieOptional.isEmpty()) {
+            throw new CustomException(ErrorCode.NOT_FOUND_MOVIE);
+        }
+        return ApiResponseDto.success(SuccessCode.MOVIE_BOOKING_POST_SUCCESS, movieOptional.get());
     }
 }
