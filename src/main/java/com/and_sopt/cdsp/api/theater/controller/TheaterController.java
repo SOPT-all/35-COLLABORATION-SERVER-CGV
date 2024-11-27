@@ -23,7 +23,7 @@ public class TheaterController {
         this.theaterService = theaterService;
     }
 
-    @GetMapping("/theater/{theaterId}/movie")
+    @GetMapping("/{theaterId}/movie")
     public ApiResponseDto<MovieTimelineGetResponse> getMovieTimeline(@PathVariable("theaterId") final Long theaterId,
                                                                      @RequestParam(value = "auditorium", required = true) final String auditorium,
                                                                      @RequestParam(value = "auditoriumType", required = true) final String auditoriumType) {
