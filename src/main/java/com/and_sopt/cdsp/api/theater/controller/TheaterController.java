@@ -20,8 +20,8 @@ public class TheaterController {
 
     @GetMapping("/theater/{theaterId}/movie")
     public ApiResponseDto<MovieTimelineGetResponse> getMovieTimeline(@PathVariable("theaterId") final Long theaterId,
-                                                                     @RequestParam("auditorium") final String auditorium,
-                                                                     @RequestParam("auditoriumType") final String auditoriumType) {
+                                                                     @RequestParam(value = "auditorium", required = true) final String auditorium,
+                                                                     @RequestParam(value = "auditoriumType", required = true) final String auditoriumType) {
         return ApiResponseDto.success(SuccessCode.MOVIE_TIMELINE_GET_SUCCESS, theaterService.getMovieTimeline(theaterId, auditorium, auditoriumType));
     }
 
