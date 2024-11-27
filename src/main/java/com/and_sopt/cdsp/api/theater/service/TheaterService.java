@@ -21,15 +21,18 @@ public class TheaterService {
     public TheaterService(TheaterRepository theaterRepository, MovieRepository movieRepository) {
         this.theaterRepository = theaterRepository;
         this.movieRepository = movieRepository;
+    }
 
     public MovieTimelineGetResponse getMovieTimeline(Long theaterId, String auditorium, String auditoriumType) {
         Theater theater = theaterRepository.findById(theaterId)
                 .orElseThrow(
-                        () ->  new CustomException(ErrorCode.THEATER_NOT_FOUND));
-        List<Movie> movieList = movieRepository.findByTheaterIdAndAuditoriumAndAuditoriumType(theaterId, auditorium, auditoriumType);
+                        () -> new CustomException(ErrorCode.THEATER_NOT_FOUND));
+        List<Movie> movieList = movieRepository.findByTheaterIdAndAuditoriumAndAuditoriumType(theaterId, auditorium,
+                auditoriumType);
         return MovieTimelineGetResponse.builder()
                 .movieList(movieList)
                 .build();
+    }
 
     public List<Theater> getAllTheaters() {
         return theaterRepository.findAll();
