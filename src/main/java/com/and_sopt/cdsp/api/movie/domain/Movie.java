@@ -5,6 +5,7 @@ import com.and_sopt.cdsp.api.ticket.domain.Ticket;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name="movie")
@@ -17,9 +18,8 @@ public class Movie {
     @JoinColumn(name = "theater_id", nullable = false)
     private Theater theater;
 
-    @ManyToOne
-    @JoinColumn(name = "ticket_id",nullable = false)
-    private Ticket ticket;
+    @OneToMany
+    private List<Ticket> ticket;
 
     private LocalDateTime startTime;
 
@@ -47,7 +47,7 @@ public class Movie {
         return theater;
     }
 
-    public Ticket getTicket() { return ticket; }
+    public List<Ticket> getTicket() { return ticket; }
 
     public LocalDateTime getStartTime() {
         return startTime;

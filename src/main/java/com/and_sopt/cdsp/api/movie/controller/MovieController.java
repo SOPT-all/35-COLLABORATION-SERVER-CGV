@@ -5,6 +5,7 @@ import com.and_sopt.cdsp.api.movie.dto.MovieDetailDto;
 import com.and_sopt.cdsp.api.movie.service.MovieService;
 import com.and_sopt.cdsp.global.response.ApiResponseDto;
 import com.and_sopt.cdsp.global.response.enums.SuccessCode;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,9 +26,11 @@ public class MovieController {
         return ApiResponseDto.success(SuccessCode.MOVIE_DETAIL_GET_SUCCESS,movieService.getMovieDetail(movieId));
     }
 
-    @PostMapping("/booking/{userId}")
-    @ResponseStatus(HttpStatus.CREATED)
-    public ApiResponseDto<MovieBookingDto> postMovieBooking(@PathVariable final Long userId, @RequestBody final MovieBookingDto movieBookingDto){
-        return ApiResponseDto.success(SuccessCode.MOVIE_BOOKING_POST_SUCCESS, movieBookingDto);
+    @PostMapping("/booking/{movieId}")
+    public ApiResponseDto<MovieBookingDto> postMovieBooking(
+            @PathVariable("movieId") final Long movieId,
+            @Valid @RequestBody final MovieBookingDto movieBookingDto){
+        movieService.bookMovie(movieId, movieBookingDto);
+        return ApiResponseDto.success(SuccessCode.MOVIE_BOOKING_POST_SUCCESS);
     }
 }
