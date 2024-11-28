@@ -1,8 +1,15 @@
 package com.and_sopt.cdsp.api.movie.domain;
 
 import com.and_sopt.cdsp.api.theater.domain.Theater;
+
 import com.and_sopt.cdsp.api.ticket.domain.Ticket;
-import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -16,6 +23,7 @@ public class Movie {
 
     @ManyToOne
     @JoinColumn(name = "theater_id", nullable = false)
+    @JsonIgnore
     private Theater theater;
 
     @OneToMany
