@@ -2,6 +2,7 @@ package com.and_sopt.cdsp.api.theater.service;
 
 import com.and_sopt.cdsp.api.movie.domain.Movie;
 import com.and_sopt.cdsp.api.movie.repository.MovieRepository;
+import com.and_sopt.cdsp.api.theater.dto.response.MovieTheaterDto;
 import com.and_sopt.cdsp.api.theater.dto.response.MovieTimelineGetResponse;
 import com.and_sopt.cdsp.api.theater.domain.Theater;
 import com.and_sopt.cdsp.api.theater.repository.TheaterRepository;
@@ -34,7 +35,13 @@ public class TheaterService {
                 .build();
     }
 
-    public List<Theater> getAllTheaters() {
-        return theaterRepository.findAll();
+    public List<MovieTheaterDto> getAllTheaters() {
+        return theaterRepository.findAll()
+                .stream()
+                .map(theater -> MovieTheaterDto.builder()
+                        .id(theater.getId())
+                        .theaterName(theater.getTheaterName())
+                        .build())
+                .toList();
     }
 }
