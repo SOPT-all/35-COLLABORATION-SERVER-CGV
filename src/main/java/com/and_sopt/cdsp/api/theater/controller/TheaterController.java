@@ -1,5 +1,6 @@
 package com.and_sopt.cdsp.api.theater.controller;
 
+import com.and_sopt.cdsp.api.theater.dto.response.MovieTheaterDto;
 import com.and_sopt.cdsp.api.theater.dto.response.MovieTimelineGetResponse;
 import com.and_sopt.cdsp.api.theater.service.TheaterService;
 import com.and_sopt.cdsp.global.response.ApiResponseDto;
@@ -31,7 +32,7 @@ public class TheaterController {
     }
 
     @GetMapping
-    public ApiResponseDto<List<Theater>> getTheaters() {
+    public ApiResponseDto<List<MovieTheaterDto>> getTheaters() {
         return ApiResponseDto.success(SuccessCode.MOVIE_THEATER_GET_SUCCESS, theaterService.getAllTheaters());
     }
 }
